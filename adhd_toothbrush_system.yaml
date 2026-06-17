@@ -5,6 +5,8 @@ blueprint:
     Delays notifications by a random window to defeat notification blindness and 
     includes actionable snooze/complete options. Supports offline queuing rules.
     
+    **Compatibility Note:** This blueprint requires toothbrushes that broadcast their live active state over Bluetooth (Oral-B, Philips Sonicare, Laifen). Due to how Oclean toothbrushes communicate with Home Assistant (batch-syncing historical data via polling rather than live broadcasting), they are not compatible with this real-time tracker.
+    
     **Prerequisite:** Create a 'Toggle' helper (Settings > Devices & Services > Helpers) named something obvious like "Toothbrush Tracker". This acts as the brain to remember if you have successfully brushed today.
   domain: automation
   source_url: https://github.com/CoatsyJnr/home-assistant-blueprints/blob/main/adhd_toothbrush_system.yaml
