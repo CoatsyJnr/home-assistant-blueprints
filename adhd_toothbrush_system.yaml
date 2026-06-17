@@ -18,7 +18,7 @@ blueprint:
       name: Which toothbrush are we tracking?
       description: >
         Select the sensor that tracks what your brush is doing right now. 
-        For Oral-B, select the sensor explicitly named "State". For Philips Sonicare, choose the "Handle State" sensor, the "Activity" sensor, or the "Brushing" binary sensor.
+        For Oral-B, select the sensor explicitly named "State". For Philips Sonicare, choose the "Handle State" sensor, the "Activity" sensor, or the "Brushing" binary sensor. For Laifen, choose the "Active Timer" or state sensor.
       selector:
         entity:
           multiple: false
@@ -28,6 +28,10 @@ blueprint:
             - integration: philips_sonicare_ble
               domain: sensor
             - integration: philips_sonicare_ble
+              domain: binary_sensor
+            - integration: laifen_ble
+              domain: sensor
+            - integration: laifen_ble
               domain: binary_sensor
 
     brushed_helper:
