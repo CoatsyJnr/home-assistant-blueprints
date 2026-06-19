@@ -13,7 +13,7 @@ blueprint:
   author: CoatsyJnr
   homeassistant:
     min_version: 2024.8.0
-  
+
   input:
     # --- PRIMARY SETUP ---
     toothbrush_entity:
@@ -268,7 +268,7 @@ action:
                   - action: input_boolean.turn_on
                     target:
                       entity_id: !input brushed_helper
-          
+
           # Force an immediate remote clear command to purge any offline queued notifications
           - domain: mobile_app
             type: notify
@@ -342,8 +342,6 @@ action:
                     - platform: state
                       entity_id: !input brushed_helper
                       to: 'on'
-                  timeout:
-                    seconds: "{{ snooze_seconds }}"
                 - choose:
                     - conditions:
                         - condition: template
@@ -424,8 +422,6 @@ action:
                     - platform: state
                       entity_id: !input brushed_helper
                       to: 'on'
-                  timeout:
-                    seconds: "{{ snooze_seconds }}"
                 - choose:
                     - conditions:
                         - condition: template
