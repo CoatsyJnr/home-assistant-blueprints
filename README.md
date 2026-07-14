@@ -9,7 +9,10 @@ I build and test these automations on my local Home Assistant instance (running 
 | Blueprint | Description | File |
 | :--- | :--- | :--- |
 | **ADHD Toothbrush Tracker** | Unpredictable, persistent routine tracker to defeat notification blindness. | [`adhd_toothbrush_system.yaml`](adhd_toothbrush_system.yaml) |
-| *(Add next blueprint here)* | *Short description here* | `filename.yaml` |
+
+<!-- FUTURE BLUEPRINT TEMPLATE (Copy and paste the row below into the table above when ready):
+| **Blueprint Name** | Short description here | `filename.yaml` |
+-->
 
 ---
 
@@ -59,4 +62,4 @@ If you prefer to install any of these blueprints manually without using the My H
 Feedback is always welcome! If you have suggestions for improving these automations, modifying the YAML logic, or find a bug, please feel free to open an issue or submit a pull request. 
 
 ---
-*Created by Thomas*
+*Created by CoatsyJnr*
