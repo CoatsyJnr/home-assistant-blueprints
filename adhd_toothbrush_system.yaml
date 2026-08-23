@@ -20,7 +20,7 @@ blueprint:
       name: Which toothbrush are we tracking?
       description: >
         Select the sensor that tracks what your brush is doing right now. 
-        For Home Assistant's built-in Oral-B integration, select the sensor explicitly named "State". For Oral-B Live, install and configure the integration, disable the built-in Oral-B config entry for the same brush, and select the main toothbrush sensor whose value changes between "idle" and "running"; it may be displayed under the brush's name rather than as "State". Do not select its Time, Last session, or charger sensors. For Philips Sonicare, choose the "Handle State" sensor, the "Activity" sensor, or the "Brushing" binary sensor. For Laifen, choose the "Active Timer" or state sensor.
+        For Home Assistant's built-in Oral-B integration, select the sensor explicitly named "State". For Oral-B Live, install and configure the integration, disable the built-in Oral-B config entry for the same brush, and select the main toothbrush sensor whose value changes between "idle" and "running"; it may be displayed under the brush's name rather than as "State". Do not select its Time, Last session, or charger sensors. For Philips Sonicare, choose "Handle State", "Activity", "Brushing State", or the "Brushing" binary sensor. For Laifen, choose "Status"; its Timer is numeric and its binary sensors do not represent brushing activity.
       selector:
         entity:
           multiple: false
@@ -35,8 +35,6 @@ blueprint:
               domain: binary_sensor
             - integration: laifen_ble
               domain: sensor
-            - integration: laifen_ble
-              domain: binary_sensor
 
     brushed_helper:
       name: Brushing Tracker Helper
@@ -211,17 +209,17 @@ variables:
 mode: parallel
 max: 10
 
-triggers:
+trigger:
   - platform: state
     entity_id: !input toothbrush_entity
     to:
-      - 'run'
-      - 'brushing'
-      - 'running'
-      - 'Running'
-      - 'Brushing'
-      - 'On'
-      - 'on'
+      - 'running'   # Home Assistant Oral-B and Oral-B Live
+      - 'run'       # Sonicare Handle State
+      - 'brushing'  # Sonicare Activity
+      - 'on'        # Sonicare Brushing State or Brushing binary sensor
+      - 'Running'   # Laifen Status
+      - 'Brushing'  # Legacy/display-value compatibility
+      - 'On'        # Legacy/display-value compatibility
     for:
       minutes: !input brushing_duration
     id: 'toothbrush_used'
