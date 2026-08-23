@@ -37,6 +37,7 @@ Standard time-based reminders are easily dismissed, and if they fire at the exac
 | Brand | Integration Type | Link |
 | :--- | :--- | :--- |
 | **Oral-B** | Core Integration | [Home Assistant: Oral-B](https://www.home-assistant.io/integrations/oralb) |
+| **Oral-B Live** | Custom Component | [GitHub: oral-ha](https://github.com/thomasgregg/oralb-ha) |
 | **Philips Sonicare** | Custom Component | [GitHub: philips_sonicare_ble](https://github.com/mtheli/philips_sonicare_ble) |
 | **Laifen** | Custom Component | [GitHub: laifen_ble](https://github.com/UrbanTechIO/Laifen) |
 
