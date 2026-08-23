@@ -215,6 +215,8 @@ triggers:
   - platform: state
     entity_id: !input toothbrush_entity
     to:
+      - 'run'
+      - 'brushing'
       - 'running'
       - 'Running'
       - 'Brushing'
