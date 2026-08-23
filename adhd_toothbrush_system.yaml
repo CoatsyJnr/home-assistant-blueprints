@@ -5,7 +5,7 @@ blueprint:
     Delays notifications by a random window to defeat notification blindness and 
     includes actionable snooze/complete options. Supports offline queuing rules.
     
-    **Compatibility Note:** This blueprint requires toothbrushes that broadcast their live active state over Bluetooth (Oral-B, Philips Sonicare, Laifen). Due to how Oclean toothbrushes communicate with Home Assistant (batch-syncing historical data via polling rather than live broadcasting), they are not compatible with this real-time tracker.
+    **Compatibility Note:** This blueprint requires toothbrushes that report their live active state to Home Assistant (Oral-B, Oral-B Live, Philips Sonicare, Laifen). Due to how Oclean toothbrushes communicate with Home Assistant (batch-syncing historical data via polling rather than live broadcasting), they are not compatible with this real-time tracker.
     
     **Prerequisite:** Create a 'Toggle' helper (Settings > Devices & Services > Helpers) named something obvious like "Toothbrush Tracker". This acts as the brain to remember if you have successfully brushed today.
   domain: automation
@@ -20,12 +20,14 @@ blueprint:
       name: Which toothbrush are we tracking?
       description: >
         Select the sensor that tracks what your brush is doing right now. 
-        For Oral-B, select the sensor explicitly named "State". For Philips Sonicare, choose the "Handle State" sensor, the "Activity" sensor, or the "Brushing" binary sensor. For Laifen, choose the "Active Timer" or state sensor.
+        For Home Assistant's built-in Oral-B integration, select the sensor explicitly named "State". For Oral-B Live, install and configure the integration, disable the built-in Oral-B config entry for the same brush, and select the main toothbrush sensor whose value changes between "idle" and "running"; it may be displayed under the brush's name rather than as "State". Do not select its Time, Last session, or charger sensors. For Philips Sonicare, choose the "Handle State" sensor, the "Activity" sensor, or the "Brushing" binary sensor. For Laifen, choose the "Active Timer" or state sensor.
       selector:
         entity:
           multiple: false
           filter:
             - integration: oralb
+              domain: sensor
+            - integration: oralb_live
               domain: sensor
             - integration: philips_sonicare_ble
               domain: sensor
